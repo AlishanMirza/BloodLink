@@ -20,50 +20,97 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Account'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  border: OutlineInputBorder(),
+              Text(
+                'Create Account',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your first name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _firstName = value;
-                },
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 24.0),
+              Text(
+                'Personal Information',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'First Name',
+                        filled: true,
+                        fillColor: Color(0xFFF5E9E9),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your first name';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _firstName = value;
+                      },
+                    ),
+                  ),
+                  SizedBox(width: 16.0),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Last Name',
+                        filled: true,
+                        fillColor: Color(0xFFF5E9E9),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your last name';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _lastName = value;
+                      },
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your last name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _lastName = value;
-                },
-              ),
-              SizedBox(height: 16.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
+                  hintText: 'Email',
+                  filled: true,
+                  fillColor: Color(0xFFF5E9E9),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -78,8 +125,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Date of Birth',
-                  border: OutlineInputBorder(),
+                  hintText: 'Date of Birth',
+                  filled: true,
+                  fillColor: Color(0xFFF5E9E9),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -91,11 +143,24 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   _dob = value;
                 },
               ),
+              SizedBox(height: 24.0),
+              Text(
+                'Blood Type',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
               SizedBox(height: 16.0),
               DropdownButtonFormField<String>(
                 decoration: InputDecoration(
-                  labelText: 'Blood Type',
-                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Color(0xFFF5E9E9),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
                 items: <String>[
                   'A+',
@@ -124,18 +189,33 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 24.0),
+              Text(
+                'Medical History',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
               SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Medical History',
-                  border: OutlineInputBorder(),
+                  hintText:
+                      'Please list any medical issues or medications you are taking',
+                  filled: true,
+                  fillColor: Color(0xFFF5E9E9),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
                 maxLines: 3,
                 onSaved: (value) {
                   _medicalHistory = value;
                 },
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 24.0),
               Row(
                 children: <Widget>[
                   Checkbox(
@@ -151,7 +231,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -176,7 +256,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 },
                 child: Text('Sign up'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xFFE53935),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
                 ),
               ),
             ],
